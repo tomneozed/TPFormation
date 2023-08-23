@@ -35,10 +35,10 @@ public class POIController {
     }
 
     @DeleteMapping(path = "/{id}")
-    @ResponseStatus(code = HttpStatus.CREATED)
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
     void delete(@PathVariable(name = "id") Long id) {
         POI poi = poiRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("POI d'id " + id + " n'existe pas"));;
+                .orElseThrow(() -> new NotFoundException("POI d'id " + id + " n'existe pas"));
         poiRepository.delete(poi);
 
         // poiRepository.deleteById(id);
